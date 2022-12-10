@@ -1,64 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+How to Setup a Laravel Project:
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1-Clone GitHub repo for this project locally
+https://github.com/yacinsantos/RESTful-API-service-for-a-TODO-list-app.git
 
-## About Laravel
+or download the zip folder
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2-cd into this Todo-api project after you cloned it
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+3-Install Composer Dependencies this will add a composer.json file
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+composer install
 
-## Learning Laravel
+4-Install NPM Dependencies this will add a packages.json file
+npm install or yarn
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5-Create a copy of your .env file
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+cp .env.example .env
 
-## Laravel Sponsors
+6-Generate an app encryption key and add it to the .env file in the APP_KEY field
+php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+7-Create an empty database for our application
+in this project name it "todo_api_db"
 
-### Premium Partners
+8-In the .env file, add database information to allow Laravel to connect to the database by filling these filed:
+(DB_HOST,DB_PORT,DB_DATABASE,DB_USERNAME,DB_PASSWORD)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+9-Migrate the database
+php artisan migrate
 
-## Contributing
+10- these are the api endpoints that you can use
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* create new todo list
+http://127.0.0.1:8000/api/todos (POST method)
 
-## Code of Conduct
+* Adding a new TODO item
+http://127.0.0.1:8000/api/todos/{todo_id}/items (POST method)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Listing all TODO items
+http://127.0.0.1:8000/api/todos/{todo_id} (GET method)
 
-## Security Vulnerabilities
+* Marking a TODO item as completed
+http://127.0.0.1:8000/api/todoitems/{todo_item_id}/completed (PATCH method)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* Listing TODO items not completed yet
+http://127.0.0.1:8000/api/todos/{todo_id}/notcompleted (GET method)
 
-## License
+* TODO items are stored in a database
+http://127.0.0.1:8000/api/todoitems (GET method)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Hosting the project
+If you want to host this project on a web server, you will need to configure the web server to point to public directory. This will vary depending on the type of web server you are using (I suggest VPS web hosting) but you can find detailed instructions in the Laravel documentation.
+
+and Hopefully that's all you need to start working on it.
